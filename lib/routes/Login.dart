@@ -35,7 +35,26 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Future<UserCredential> signInWithGoogle() async {
+  // Future<UserCredential> signInWithGoogle() async {
+  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  //   final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken,
+  //     idToken: googleAuth?.idToken,
+  //   );
+
+  //   // if (googleUser==null){
+  //   //   print('Sign in Failed');
+  //   // } else {
+  //   //   Navigator.pushReplacementNamed(context, '/');
+  //   // }
+
+  //   return await FirebaseAuth.instance.signInWithCredential(credential);
+
+  // }
+
+  void signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
@@ -44,14 +63,13 @@ class _LoginState extends State<Login> {
       idToken: googleAuth?.idToken,
     );
 
-    // if (googleUser==null){
-    //   print('Sign in Failed');
-    // } else {
-    //   Navigator.pushReplacementNamed(context, '/');
-    // }
+    await FirebaseAuth.instance.signInWithCredential(credential);
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-
+    if (googleUser==null){
+      print('Sign in Failed');
+    } else {
+      Navigator.pushReplacementNamed(context, '/');
+    }
   }
 
   
