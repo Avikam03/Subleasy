@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 // new thing
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 
 
@@ -20,8 +22,14 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 }
 
+
+  // Map data = {'name': 'wowdoesntworkxd'};
+
   @override
   Widget build(BuildContext context) {
+
+    // data = ModalRoute.of(context)?.settings.arguments as Map;
+
     return Material(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,6 +52,9 @@ class _SplashScreenState extends State<SplashScreen> {
       if (user == null) {
         Navigator.pushReplacementNamed(context, '/landing');
       } else {
+        // Navigator.pushReplacementNamed(context, '/dashboard', arguments:{
+        //   'name': data['name'],
+        // });
         Navigator.pushReplacementNamed(context, '/dashboard');
       }
     });

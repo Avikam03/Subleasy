@@ -3,6 +3,9 @@ import './routes/Splash.dart';
 import './routes/Login.dart';
 import './routes/Landing.dart';
 import './routes/Dashboard.dart';
+import './routes/MyListings.dart';
+import './routes/CreateNew.dart';
+
 
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +31,8 @@ class MyApp extends StatelessWidget {
         '/landing' : (_)=>Landing(),
         '/login' : (_)=>Login(),
         '/dashboard' : (_)=>Dashboard(),
+        '/mylistings' : (_)=>MyListings(),
+        '/createnew' : (_)=>CreateNew(),
       }
     );
   }
