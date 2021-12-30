@@ -104,10 +104,32 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   String name = '';
+  List listings = [];
+
 
   @override
   void initState() {
     super.initState();
+
+    FirebaseFirestore.instance
+    .collection('listings')
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+            listings.add(
+              [doc['title'],
+               doc['price'],
+               doc['startmonth'],
+               doc['endmonth'],
+               doc['duration'],
+               doc['Images'],
+               doc['city']
+               ]);
+            // print(doc["title"]);
+        });
+    });
+
+
 
     FirebaseFirestore.instance
         .collection('users')
@@ -123,6 +145,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     print(name);
+    print(listings);
 
     return MyApp();
   }
