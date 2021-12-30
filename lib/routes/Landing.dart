@@ -6,33 +6,6 @@ import './Login.dart';
 class Landing extends StatelessWidget {
   const Landing({Key? key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Landing'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           child: const Text('Get Started'),
-//           onPressed: () {
-//             Navigator.push(
-//               context,
-//               MaterialPageRoute(builder: (context) => Login()),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-
-
-
-// bruh
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,15 +25,14 @@ class Landing extends StatelessWidget {
                       margin: const EdgeInsets.only(top: 110),
                       child: const Image(
                         image: AssetImage('assets/images/landing.png'),
-                        // image: AssetImage('./assets/images/landing.png'),
                       ),
                     ),
                     Container(
                       width: 315.0,
                       height: 68.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Color(0xffF4F4F4),
-                          borderRadius: BorderRadius.all(const Radius.circular(15.0)),
+                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
                       ),
                       margin: const EdgeInsets.only(top: 10),
                       alignment: Alignment.center,

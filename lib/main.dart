@@ -5,9 +5,6 @@ import './routes/Landing.dart';
 import './routes/Dashboard.dart';
 import './routes/MyListings.dart';
 import './routes/CreateNew.dart';
-import './routes/imageupload.dart';
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
