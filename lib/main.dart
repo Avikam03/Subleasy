@@ -5,7 +5,7 @@ import './routes/Landing.dart';
 import './routes/Dashboard.dart';
 import './routes/MyListings.dart';
 import './routes/CreateNew.dart';
-
+import './routes/imageupload.dart';
 
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "PartyLoo",
       routes: {
-        '/' : (_)=>SplashScreen(),
+        '/': (context) => ImageUpload(),
+
+        /* '/' : (_)=>SplashScreen(), */
         '/landing' : (_)=>Landing(),
         '/login' : (_)=>Login(),
         '/dashboard' : (_)=>Dashboard(),
