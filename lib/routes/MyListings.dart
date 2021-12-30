@@ -17,10 +17,6 @@ bool nullCheck(object){
 
 class MyListings extends StatefulWidget {
 
-  // String name; 
-
-  // Dashboard(this.name); 
-
   MyListings({Key? key}) : super(key: key);
 
   @override
@@ -28,18 +24,11 @@ class MyListings extends StatefulWidget {
 }
 
 class _MyListingsState extends State<MyListings> {
-  // GoogleSignIn googleSignIn = GoogleSignIn(clientId: "12049475534-pd6lbbpsofo8h8otrbjf8flvvgm5d2pv.apps.googleusercontent.com");
-
-  // GoogleSignInAccount? account;
-  // late GoogleSignInAuthentication auth;
-  // bool gotUser = false;
 
   var currentUser = FirebaseAuth.instance.currentUser;
-  // var currentUser = FirebaseAuth.instance.currentUser;
   @override
   void initState(){
     super.initState();
-    // getCurrentUser();
   }
 
 
