@@ -102,14 +102,20 @@ class Dashboard extends StatefulWidget {
   _DashboardState createState() => _DashboardState();
 }
 
+List listings = [];
+
+List<Property> dis = [];
+
+
 class _DashboardState extends State<Dashboard> {
   String name = '';
-  List listings = [];
+  // List listings = [];
 
 
   @override
   void initState() {
     super.initState();
+
 
     FirebaseFirestore.instance
     .collection('listings')
@@ -147,6 +153,18 @@ class _DashboardState extends State<Dashboard> {
     print(name);
     print(listings);
 
+    for (var i = 0; i < listings.length; i++) {
+      String title = listings[i][0];
+      int price = double.parse(listings[i][1]).round(); 
+
+     Image img = Image(image: NetworkImage(listings[i][5]['link']));
+     String city = listings[i][6];
+
+     var prop = Property(city, '', title, img, price, ''); 
+     dis.add(prop); 
+     
+    }
+
     return MyApp();
   }
 }
@@ -163,7 +181,7 @@ class Property {
       this.rentMonth, this.duration);
 }
 
-List<Property> dis = [];
+
 
 // London, Waterloo, Toronto, Kitchner
 
@@ -344,10 +362,10 @@ class _ContentState extends State<Content> {
                           button2 = false;
                           button3 = true;
                           button4 = false;
-                          cur = 'Kitchner';
+                          cur = 'Kitchener';
 
                           x = dis
-                              .where((i) => (i.PrimaryLocation) == 'Kitchner')
+                              .where((i) => (i.PrimaryLocation) == 'Kitchener')
                               .toList();
 
                           len = x.length;
@@ -359,7 +377,7 @@ class _ContentState extends State<Content> {
                                   .toList());
                         });
                       },
-                      child: const Text('Kitchner'),
+                      child: const Text('Kitchener'),
                     )),
                 const VerticalDivider(
                   thickness: 1,

@@ -338,6 +338,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
     .then((value) => print("listing Added"))
     .catchError((err) => print("failed to add listing: $err"));
 
+    Navigator.pushReplacementNamed(context, '/mylistings');
+
   }
   
 }
