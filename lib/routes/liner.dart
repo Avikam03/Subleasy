@@ -15,7 +15,7 @@ class liner extends StatelessWidget {
           Container(
             width: 500,
             height: 250,
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(3),

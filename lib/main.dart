@@ -8,7 +8,7 @@ import './routes/CreateNew.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
+import './routes/imageupload.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,10 +23,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "PartyLoo",
+      
+      theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+     color: Color(0xFF426BFF),
+  ),
+      primaryColor: const Color(0xFF426BFF),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            
+            primary: const Color(0xFF426BFF),
+        ),
+      ),
+      ),
+      
       routes: {
-        '/': (context) => ImageUpload(),
+        /* '/': (context) => ImageUpload(), */
 
-        /* '/' : (_)=>SplashScreen(), */
+        '/' : (_)=>SplashScreen(),
         '/landing' : (_)=>Landing(),
         '/login' : (_)=>Login(),
         '/dashboard' : (_)=>Dashboard(),

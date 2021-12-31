@@ -17,8 +17,20 @@ class _CreateNewState extends State<CreateNew> {
   @override
   Widget build(BuildContext context) {
     return 
-    const MaterialApp(
-      home:MyCustomForm(),
+    MaterialApp(
+      theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+      color: Color(0xFF426BFF),
+    ),
+      primaryColor: const Color(0xFF426BFF),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            primary: const Color(0xFF426BFF),
+          ),
+        ),
+      ),
+      home:const MyCustomForm(),
+      
     );
 
 
@@ -94,144 +106,218 @@ class _MyCustomFormState extends State<MyCustomForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Scaffold(
-        body:
-      Container(
-        margin: const EdgeInsets.only(top: 20.0), 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Property\'s title',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: title,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Description',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: description,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'City',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: city,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Address',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: address,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Rent (per month)',
-              ),
-              inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly],
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: rent,
-            ),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Center(child: Text('Create New Listing')),
             
-            TextFormField(
-
-              decoration: const InputDecoration(
-                hintText: 'Starting Date',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: startingdate,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Ending Date',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: endingdate,
-            ),
-
-            TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Duration (in months)',
+          ),
+          body:
+        SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                margin: const EdgeInsets.only(top: 20.0), 
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
                 
-              ),
-              inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly],
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              controller: duration,
-            ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Property\'s title',
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: title,
+                    ),
+                    const SizedBox(height: 15),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Description',
+                        fillColor: Colors.grey,
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: description,
+                    ),
+                    const SizedBox(height: 15),
+                
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'City',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: city,
+                    ),
+                    const SizedBox(height: 15),
+                
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Address',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: address,
+                    ),
+                    const SizedBox(height: 15),
+                
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Rent (per month)',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly],
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: rent,
+                    ),
+                    const SizedBox(height: 15),
+                    
+                    TextFormField(
+                
+                      decoration: const InputDecoration(
+                        hintText: 'Starting Date',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: startingdate,
+                    ),
+                    SizedBox(height: 15),
+                    
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Ending Date',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                      ),
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: endingdate,
+                    ),
+                    SizedBox(height: 15),
+                
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Duration (in months)',
+                        border: OutlineInputBorder(),
+                        hintStyle: TextStyle(
+                          color: Colors.grey
+                          
+                          ),
+                        
+                      ),
+                      inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly],
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      controller: duration,
+                    ),
+                    SizedBox(height: 15),
+                
+                    
+                
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: Center(
 
-            
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: SizedBox(
+                              width: double.infinity,
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Validate will return true if the form is valid, or false if
-                  // the form is invalid.
-                  if (_formKey.currentState!.validate()) {
-                    createNewListing();
-                    // Process data.
-                  }
-                },
-                child: const Text('Submit'),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  // Validate will return true if the form is valid, or false if
+                                  // the form is invalid.
+                                  if (_formKey.currentState!.validate()) {
+                                    createNewListing();
+                                    // Process drata.
+                                  }
+                                },
+                                child: const Text('Submit'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    
+                  ],
+                ),
               ),
             ),
-          ],
+          ),
         ),
-      ),
-    )
+          ),
+      )
     );
   }
 

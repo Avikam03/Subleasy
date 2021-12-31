@@ -41,7 +41,7 @@ class _MyListingsState extends State<MyListings> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text('Your Listings',
+          const Text('Your Listings',
           style: TextStyle(fontSize: 30, color: Color(0xff426BFF)),
           ),
           ElevatedButton(

@@ -185,25 +185,26 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title: Text('Dashboad'),
+              backgroundColor: Color(0xFF426BFF),
+              title:const Text('Dashboard'),
             ),
             body: SingleChildScrollView(
               child: ConstrainedBox
               (
                 constraints: const BoxConstraints(),
-                child: Content()
+                child: const Content()
                 )),
             bottomNavigationBar: BottomAppBar(
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.home)),
-                IconButton(onPressed: SignOut, icon: Icon(Icons.logout)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+                IconButton(onPressed: SignOut, icon: const Icon(Icons.logout)),
                 IconButton(
                     onPressed: () =>
                         Navigator.pushReplacementNamed(context, '/mylistings'),
-                    icon: Icon(Icons.add)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.chat)),
+                    icon: const Icon(Icons.add)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.chat)),
               ],
             ))));
   }
@@ -251,14 +252,16 @@ class _ContentState extends State<Content> {
       children: x
           .map<Widget>((i) => liner(i.rentMonth, i.image, i.address))
           .toList());
-
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
-        ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
-
+        ElevatedButton.styleFrom(
+          textStyle: const TextStyle(fontSize: 20,fontFamily: 'Roboto'),
+          primary: const Color(0xFF426BFF),
+        );
     final ButtonStyle clicked = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20), primary: Colors.grey);
+          textStyle: const TextStyle(fontSize: 20,fontFamily: 'Roboto'), primary: Colors.grey
+        );
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -266,138 +269,140 @@ class _ContentState extends State<Content> {
         Container(
           margin: const EdgeInsets.symmetric(vertical: 20.0),
           height: 50.0,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: ElevatedButton(
-                    style: button1 ? style : clicked,
-                    onPressed: () {
-                      setState(() {
-                        button1 = true;
-                        button2 = false;
-                        button3 = false;
-                        button4 = false;
-                        cur = 'Toronto';
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: ElevatedButton(
+                      style: button1 ? style : clicked,
+                      onPressed: () {
+                        setState(() {
+                          button1 = true;
+                          button2 = false;
+                          button3 = false;
+                          button4 = false;
+                          cur = 'Toronto';
+                          x = dis
+                              .where((i) => (i.PrimaryLocation) == 'Toronto')
+                              .toList();
 
-                        x = dis
-                            .where((i) => (i.PrimaryLocation) == 'Toronto')
-                            .toList();
+                          len = x.length;
 
-                        len = x.length;
+                          y = Column(
+                              children: x
+                                  .map<Widget>((i) =>
+                                      liner(i.rentMonth, i.image, i.address))
+                                  .toList());
+                        });
+                      },
+                      child: const Text('Toronto'),
+                    )),
+                const VerticalDivider(
+                  thickness: 1,
+                  color: Color(0xFFF6F4F4),
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: ElevatedButton(
+                      style: button2 ? style : clicked,
+                      onPressed: () {
+                        setState(() {
+                          button1 = false;
+                          button2 = true;
+                          button3 = false;
+                          button4 = false;
+                          cur = 'Waterloo';
+                          x = dis
+                              .where((i) => (i.PrimaryLocation) == 'Waterloo')
+                              .toList();
 
-                        y = Column(
-                            children: x
-                                .map<Widget>((i) =>
-                                    liner(i.rentMonth, i.image, i.address))
-                                .toList());
-                      });
-                    },
-                    child: const Text('Toronto'),
-                  )),
-              VerticalDivider(
-                thickness: 1,
-                color: Color(0xFFF6F4F4),
-              ),
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: ElevatedButton(
-                    style: button2 ? style : clicked,
-                    onPressed: () {
-                      setState(() {
-                        button1 = false;
-                        button2 = true;
-                        button3 = false;
-                        button4 = false;
-                        cur = 'Waterloo';
-                        x = dis
-                            .where((i) => (i.PrimaryLocation) == 'Waterloo')
-                            .toList();
+                          len = x.length;
 
-                        len = x.length;
+                          y = Column(
+                              children: x
+                                  .map<Widget>((i) =>
+                                      liner(i.rentMonth, i.image, i.address))
+                                  .toList());
+                        });
+                      },
+                      child: const Text('Waterloo'),
+                    )),
+                const VerticalDivider(
+                  thickness: 1,
+                  color: Color(0xFFF6F4F4),
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: ElevatedButton(
+                      style: button3 ? style : clicked,
+                      onPressed: () {
+                        setState(() {
+                          button1 = false;
+                          button2 = false;
+                          button3 = true;
+                          button4 = false;
+                          cur = 'Kitchner';
 
-                        y = Column(
-                            children: x
-                                .map<Widget>((i) =>
-                                    liner(i.rentMonth, i.image, i.address))
-                                .toList());
-                      });
-                    },
-                    child: const Text('Waterloo'),
-                  )),
-              VerticalDivider(
-                thickness: 1,
-                color: Color(0xFFF6F4F4),
-              ),
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: ElevatedButton(
-                    style: button3 ? style : clicked,
-                    onPressed: () {
-                      setState(() {
-                        button1 = false;
-                        button2 = false;
-                        button3 = true;
-                        button4 = false;
-                        cur = 'Kitchner';
+                          x = dis
+                              .where((i) => (i.PrimaryLocation) == 'Kitchner')
+                              .toList();
 
-                        x = dis
-                            .where((i) => (i.PrimaryLocation) == 'Kitchner')
-                            .toList();
+                          len = x.length;
 
-                        len = x.length;
+                          y = Column(
+                              children: x
+                                  .map<Widget>((i) =>
+                                      liner(i.rentMonth, i.image, i.address))
+                                  .toList());
+                        });
+                      },
+                      child: const Text('Kitchner'),
+                    )),
+                const VerticalDivider(
+                  thickness: 1,
+                  color: Color(0xFFF6F4F4),
+                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: ElevatedButton(
+                      style: button4 ? style : clicked,
+                      onPressed: () {
+                        setState(() {
+                          button1 = false;
+                          button2 = false;
+                          button3 = false;
+                          button4 = true;
+                          cur = 'London';
 
-                        y = Column(
-                            children: x
-                                .map<Widget>((i) =>
-                                    liner(i.rentMonth, i.image, i.address))
-                                .toList());
-                      });
-                    },
-                    child: const Text('Kitchner'),
-                  )),
-              VerticalDivider(
-                thickness: 1,
-                color: Color(0xFFF6F4F4),
-              ),
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: ElevatedButton(
-                    style: button4 ? style : clicked,
-                    onPressed: () {
-                      setState(() {
-                        button1 = false;
-                        button2 = false;
-                        button3 = false;
-                        button4 = true;
-                        cur = 'London';
+                          x = dis
+                              .where((i) => (i.PrimaryLocation) == 'London')
+                              .toList();
 
-                        x = dis
-                            .where((i) => (i.PrimaryLocation) == 'London')
-                            .toList();
+                          len = x.length;
 
-                        len = x.length;
-
-                        y = Column(
-                            children: x
-                                .map<Widget>((i) =>
-                                    liner(i.rentMonth, i.image, i.address))
-                                .toList());
-                      });
-                    },
-                    child: const Text('London'),
-                  )),
-            ],
+                          y = Column(
+                              children: x
+                                  .map<Widget>((i) =>
+                                      liner(i.rentMonth, i.image, i.address))
+                                  .toList());
+                        });
+                      },
+                      child: const Text('London'),
+                    )),
+              ],
+            ),
           ),
         ),
         Container(
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
                 "$len Listing Found",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontStyle: FontStyle.normal,
                   fontWeight: FontWeight.bold,
                   fontSize: 16.0,
@@ -406,12 +411,12 @@ class _ContentState extends State<Content> {
             ),
             width: 200.0,
             height: 40.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0xFF426BFF),
-              borderRadius: BorderRadius.all(const Radius.circular(10.0)),
+              borderRadius: BorderRadius.all(const Radius.circular(15.0)),
             )),
-        SizedBox(height: 15),
-        Container(
+        const SizedBox(height: 15),
+        SizedBox(
           height: 550.0,
           child: SingleChildScrollView(
             child: y,
