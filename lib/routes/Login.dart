@@ -89,7 +89,7 @@ class _LoginState extends State<Login> {
     if (googleUser==null){
       print('Sign in Failed');
     } else {
-      Navigator.pushReplacementNamed(context, '/');
+      Navigator.pushReplacementNamed(context, '/', );
     }
   }
 }
