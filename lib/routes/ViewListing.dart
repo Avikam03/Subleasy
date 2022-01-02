@@ -28,6 +28,19 @@ Map listings = {'title':'',
 
 };
 
+var title1 = '';
+        var city = ''; 
+        var desc = ''; 
+        var rent = '';
+        var Duration = ''; 
+        var StartMonth = '';
+        var EndMonth = '';
+        var Address = '';
+        var imgpath = '';
+List<String> listPaths=[];
+bool flag = false;
+
+// "https://markstewart.com/wp-content/uploads/2020/06/MODERN-HOUSE-PLAN-MODERN-SEVEN-MM-2659-FRONT-VIEW-scaled.jpg"
         // listings['endmonth']= data['endmonth'];
         // listings['Images']= data['Images'];
         // listings['city']= data['city'];
@@ -41,16 +54,23 @@ Map listings = {'title':'',
 
 class _MyappState extends State<Myapp> {
 
-  
+  void updatepath(String imgpath){
+
+    setState(() {
+      listPaths.add(imgpath);
+    });
+
+  }
   
 
   late String id = widget.id;
-  List<String> listPaths=["https://markstewart.com/wp-content/uploads/2020/06/MODERN-HOUSE-PLAN-MODERN-SEVEN-MM-2659-FRONT-VIEW-scaled.jpg"];
-
-
+  
     @override
     void initState() {
+      
       super.initState();
+
+      listPaths= [];
 
       FirebaseFirestore.instance.collection('listings').doc(widget.id).get()
       .then((DocumentSnapshot documentSnapshot) async {
@@ -58,18 +78,22 @@ class _MyappState extends State<Myapp> {
         Map data = documentSnapshot.data() as Map;
         print('Document data: ${data}');
 
-        listings['title']= await data['title'];
-        listings['endmonth']= await data['endmonth'];
-        listings['Images']= await data['Images'];
-        listings['city']= await data['city'];
-        listings['address']= await data['address'];
-        listings['rent']= await data['price'];
-        listings['startmonth']= await data['startmonth'];
-        listings['ownerid']= await data['ownerid'];
-        listings['description']= await data['description'];
-        listings['duration']= await data['duration'];
+        setState((){
+          title1= data['title'];
+          EndMonth = data['endmonth'];
+          city = data['city'];
+          Address= data['address'];
+          rent = data['price'];
+          StartMonth= data['startmonth'];
+          desc= data['description'];
+          Duration = data['duration'];
+          imgpath = data['Images']['link']; 
+          listPaths.add(imgpath);
+        });
 
-        print(listings);
+        // = await data['Images']
+
+        
 
 
 
@@ -87,14 +111,7 @@ class _MyappState extends State<Myapp> {
   @override
   Widget build(BuildContext context) {
 
-    var title1 = listings['title'];
-        var city = listings['city']; 
-        var desc = listings['description']; 
-        var rent = listings['rent'];
-        var Duration = listings['duration']; 
-        var StartMonth = listings['startmonth'];
-        var EndMonth = listings['endmonth'];
-        var Address = listings['address'];
+    
 
     if(city == ''){
       FirebaseFirestore.instance.collection('listings').doc(widget.id).get()
@@ -111,8 +128,10 @@ class _MyappState extends State<Myapp> {
         StartMonth= await data['startmonth'];
         desc= await data['description'];
         Duration= await data['duration'];
+        imgpath = await data['Images']['link'];
+        listPaths= [imgpath];
 
-        print(listings);
+        print(imgpath);
 
 
 
@@ -127,6 +146,7 @@ class _MyappState extends State<Myapp> {
 
 
     return Scaffold(
+
           appBar: AppBar(
             title: Text(title1),
           ),
