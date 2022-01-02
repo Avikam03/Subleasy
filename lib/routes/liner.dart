@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'ViewListing.dart';
+
 
 class liner extends StatelessWidget {
+  String id;
   int rent;
   Image pic;
   String location;
 
-  liner(this.rent, this.pic, this.location);
+  liner(this.rent, this.pic, this.location,this.id);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,21 @@ class liner extends StatelessWidget {
               child: FittedBox(
                 child: InkWell(
                   splashColor: Colors.black26,
-                  onTap: () {},
+                  onTap: (){
+                    // Navigator.pushReplacementNamed(
+                    //   context,
+                    //    '/viewlisting',
+                    //     arguments: {'id': id});
+                    // Navigator.of(context).pushReplacementNamed(
+                    //    '/viewlisting',
+                    //     arguments: {'id': id});
+                    Navigator.push(context, MaterialPageRoute(
+                    builder: 
+                    (builder)=> Myapp(id: id)
+                    ), ); 
+                  },
+
+                  
                   child: pic,
                 ),
                 fit: BoxFit.fill,

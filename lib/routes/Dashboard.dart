@@ -39,10 +39,12 @@ class _DashboardState extends State<Dashboard> {
                doc['endmonth'],
                doc['duration'],
                doc['Images'],
-               doc['city']
+               doc['city'],
+               doc.id
                ]);
             // print(doc["title"]);
         });
+        
     });
 
 
@@ -64,15 +66,16 @@ class _DashboardState extends State<Dashboard> {
     print(listings);
 
     for (var i = 0; i < listings.length; i++) {
+
       String title = listings[i][0];
       int price = double.parse(listings[i][1]).round(); 
 
      Image img = Image(image: NetworkImage(listings[i][5]['link']));
      String city = listings[i][6];
+     String id = listings[i][7];
 
-     var prop = Property(city, '', title, img, price, ''); 
-     dis.add(prop); 
-     
+     var prop = Property(city, '', title, img, price, '',id); 
+     dis.add(prop);      
     }
 
     return MyApp();
@@ -86,9 +89,10 @@ class Property {
   Image image;
   int rentMonth;
   String duration;
+  String id;
 
   Property(this.PrimaryLocation, this.owner, this.address, this.image,
-      this.rentMonth, this.duration);
+      this.rentMonth, this.duration,this.id);
 }
 
 
@@ -178,7 +182,7 @@ var len = x.length;
 class _ContentState extends State<Content> {
   var y = Column(
       children: x
-          .map<Widget>((i) => liner(i.rentMonth, i.image, i.address))
+          .map<Widget>((i) => liner(i.rentMonth, i.image, i.address,i.id))
           .toList());
   @override
   Widget build(BuildContext context) {
@@ -222,7 +226,7 @@ class _ContentState extends State<Content> {
                           y = Column(
                               children: x
                                   .map<Widget>((i) =>
-                                      liner(i.rentMonth, i.image, i.address))
+                                      liner(i.rentMonth, i.image, i.address,i.id))
                                   .toList());
                         });
                       },
@@ -252,7 +256,7 @@ class _ContentState extends State<Content> {
                           y = Column(
                               children: x
                                   .map<Widget>((i) =>
-                                      liner(i.rentMonth, i.image, i.address))
+                                      liner(i.rentMonth, i.image, i.address,i.id))
                                   .toList());
                         });
                       },
@@ -283,7 +287,7 @@ class _ContentState extends State<Content> {
                           y = Column(
                               children: x
                                   .map<Widget>((i) =>
-                                      liner(i.rentMonth, i.image, i.address))
+                                      liner(i.rentMonth, i.image, i.address,i.id))
                                   .toList());
                         });
                       },
@@ -314,7 +318,7 @@ class _ContentState extends State<Content> {
                           y = Column(
                               children: x
                                   .map<Widget>((i) =>
-                                      liner(i.rentMonth, i.image, i.address))
+                                      liner(i.rentMonth, i.image, i.address,i.id))
                                   .toList());
                         });
                       },
