@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
         '/dashboard' : (_)=>Dashboard(),
         '/mylistings' : (_)=>MyListings(),
         '/createnew' : (_)=>CreateNew(),
+        '/imageupload' : (_)=>ImageUpload(),
       }
     );
   }

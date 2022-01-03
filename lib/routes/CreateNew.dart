@@ -349,6 +349,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:partyx/routes/imageupload.dart';
+
 
 class CreateNew extends StatefulWidget {
   CreateNew({Key? key}) : super(key: key);
@@ -356,6 +358,8 @@ class CreateNew extends StatefulWidget {
   @override
   _CreateNewState createState() => _CreateNewState();
 }
+
+String id = '';
 
 class _CreateNewState extends State<CreateNew> {
   @override
@@ -676,9 +680,32 @@ class _MyCustomFormState extends State<MyCustomForm> {
           'startmonth': dropdownValue,
           'title': title.text,
         })
-        .then((value) => print("listing Added"))
+        // .then((value) => print("listing Added"))
+        .then((value) async => id = value.id)
         .catchError((err) => print("failed to add listing: $err"));
 
-    Navigator.pushReplacementNamed(context, '/mylistings');
+    // Navigator.pushReplacementNamed(context, '/mylistings', arguments: {
+    //   'docid': id
+    // });
+
+//     Navigator.push(context, MaterialPageRoute(
+//         builder: (context) => const ImageUpload()),
+//         settings: RouteSettings(
+//               arguments: id,
+//             ),
+//  )  ;
+
+    Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ImageUpload(),
+            // Pass the arguments as part of the RouteSettings. The
+            // DetailScreen reads the arguments from these settings.
+            settings: RouteSettings(
+              arguments: id,
+            ),
+          ),
+        );
+
   }
 }

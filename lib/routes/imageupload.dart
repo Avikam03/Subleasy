@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Widget to capture and crop the image
 class ImageUpload extends StatefulWidget {
@@ -19,9 +21,18 @@ class ImageUploadState extends State<ImageUpload> {
   bool _isUploading;
   String _uploadedFileURL; */
   String imageUrl = "";
+  // Map data = {};
+  String docid = '';
+
   @override
 
   Widget build(BuildContext context) {
+    
+    docid = ModalRoute.of(context)!.settings.arguments as String;
+    // docid = data['docid'];
+
+
+
     return Scaffold(
         appBar: AppBar(
           title: const Text("Upload Image"),
@@ -105,6 +116,18 @@ class ImageUploadState extends State<ImageUpload> {
         setState(() {
           imageUrl = downloadUrl;
         });
+
+
+        FirebaseFirestore.instance.collection('listings')
+        .doc(docid)
+        .update({'Images': {'link': imageUrl}})
+        .then((value) => print("Listing Image Added"))
+        .catchError((error) => print("Failed to update listing: $error"));
+
+
+
+
+
       } else {
         print('No Path Received');
       }
