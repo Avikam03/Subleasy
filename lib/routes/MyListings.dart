@@ -29,6 +29,11 @@ class _MyListingsState extends State<MyListings> {
   @override
   void initState(){
     super.initState();
+
+    Future<QuerySnapshot<Map<String, dynamic>>> data = FirebaseFirestore.instance
+    .collection('listings')
+    .where('ownerid' == FirebaseAuth.instance.currentUser?.uid)
+    .get();
   }
 
 
