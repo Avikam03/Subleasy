@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
     }
 
     throw UnsupportedError(
@@ -35,41 +38,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAA5RNFE9Yp1Jj6Cgkmo3RKEo1k43TAmpY',
-    appId: '1:12049475534:web:07afbd0f693752f4e9ad9f',
-    messagingSenderId: '12049475534',
-    projectId: 'partyloo-336302',
-    authDomain: 'partyloo-336302.firebaseapp.com',
-    storageBucket: 'partyloo-336302.appspot.com',
+    apiKey: 'AIzaSyDBOSkWTNnxEpJdslApp7cEh7opDulhbnw',
+    appId: '1:363515450629:web:aaef44093893c9d64c536c',
+    messagingSenderId: '363515450629',
+    projectId: 'mychat-5d9a1',
+    authDomain: 'mychat-5d9a1.firebaseapp.com',
+    storageBucket: 'mychat-5d9a1.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBwbYEahezgp_b0ih1TB69jehjIeLgzT0Y',
-    appId: '1:12049475534:android:e7a4697c4f255997e9ad9f',
-    messagingSenderId: '12049475534',
-    projectId: 'partyloo-336302',
-    storageBucket: 'partyloo-336302.appspot.com',
+    apiKey: 'AIzaSyDmk4uLP4UD2PL5Mw8XyotCoXGrS9NI0Os',
+    appId: '1:363515450629:android:04c921305def0c854c536c',
+    messagingSenderId: '363515450629',
+    projectId: 'mychat-5d9a1',
+    storageBucket: 'mychat-5d9a1.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBYVfdp_Er6VStzXOdY1vOJa2CZMWshxCs',
-    appId: '1:12049475534:ios:8c72f141d6c06f6ee9ad9f',
-    messagingSenderId: '12049475534',
-    projectId: 'partyloo-336302',
-    storageBucket: 'partyloo-336302.appspot.com',
-    androidClientId: '12049475534-a2iujuegoedoohgtsqtbqddur0dg7kn2.apps.googleusercontent.com',
-    iosClientId: '12049475534-6q2ie3nj46ptm8jddes94sfqkaakvfcb.apps.googleusercontent.com',
-    iosBundleId: 'com.example.partyx',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBYVfdp_Er6VStzXOdY1vOJa2CZMWshxCs',
-    appId: '1:12049475534:ios:8c72f141d6c06f6ee9ad9f',
-    messagingSenderId: '12049475534',
-    projectId: 'partyloo-336302',
-    storageBucket: 'partyloo-336302.appspot.com',
-    androidClientId: '12049475534-a2iujuegoedoohgtsqtbqddur0dg7kn2.apps.googleusercontent.com',
-    iosClientId: '12049475534-6q2ie3nj46ptm8jddes94sfqkaakvfcb.apps.googleusercontent.com',
-    iosBundleId: 'com.example.partyx',
+    apiKey: 'AIzaSyDDwuR2T9lJfjkX3egac21hg48hKqafwz0',
+    appId: '1:363515450629:ios:899803561908f1454c536c',
+    messagingSenderId: '363515450629',
+    projectId: 'mychat-5d9a1',
+    storageBucket: 'mychat-5d9a1.appspot.com',
+    iosClientId: '363515450629-d735amoth6p8o8jfk23kk9lshaghuptd.apps.googleusercontent.com',
+    iosBundleId: 'com.example.chatapp',
   );
 }

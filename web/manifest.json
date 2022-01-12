@@ -1,6 +1,6 @@
 {
-    "name": "partyx",
-    "short_name": "partyx",
+    "name": "chatapp",
+    "short_name": "chatapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

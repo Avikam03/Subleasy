@@ -1,0 +1,8 @@
+chatMessage -> 1. messageContent
+            2. messageType
+
+
+chatUsers -> 1. name
+            2. messageText
+            3. imageURL
+            4. time
