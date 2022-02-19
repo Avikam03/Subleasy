@@ -1,2 +1,2 @@
 # Subleasy
-A simple app that helps you find sublets nearby.
+An elegant solution to finding sublets nearby.
