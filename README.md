@@ -8,4 +8,6 @@ A cross-platform Flutter based solution to finding sublets in university towns
   <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/subleasy5.png" />
   <img align="center" src= "https://raw.githubusercontent.com/Avikam03/Avikam03/master/project_assets/subleasy6.png" />
  </div>
+ 
+
 thank you Ananya Mangla for the amazing designs ❤️
