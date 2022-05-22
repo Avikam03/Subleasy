@@ -10,4 +10,4 @@ A cross-platform Flutter based solution to finding sublets in university towns
  </div>
  <br/><br/>
 <br/><br/>
-thank you [Ananya](https://www.github.com/Ananya-Mangla) for the amazing designs ❤️
+**thank you Ananya Mangla for the amazing designs** ❤️
